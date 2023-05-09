@@ -10,9 +10,8 @@ module.exports = {
   },
     plugins: [require("daisyui")],
     daisyui: {
-        themes: ["cupcake", "dark", "cmyk"], // index 0=light, 1=dark, 2..=can be applied to any mode
         styled: true,
-        themes: true,
+        themes: true, // include all daisyui's theme
         base: true,
         utils: true,
         logs: true,
