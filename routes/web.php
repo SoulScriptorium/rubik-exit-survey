@@ -12,9 +12,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('welcome', function () {return view('welcome');});
 Route::get('testing', function () {return view('testing');});
 
-Route::get('/', function () {
-    //return view('welcome');
-    return view('index');
-});
+Route::get('/', \App\Http\Livewire\StarterPage::class)->name('index');
+Route::get('survey', \App\Http\Livewire\Questionnaire::class)->name('survey');
