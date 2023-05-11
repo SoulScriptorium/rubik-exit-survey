@@ -1,7 +1,7 @@
     <!-- Breathing in, I calm body and mind. Breathing out, I smile. - Thich Nhat Hanh -->
 <div class="navbar bg-transparent">
     <div class="navbar-start">
-        <a class="btn btn-ghost normal-case text-xl">Exusiai Gate</a>
+        <a class="btn btn-ghost normal-case text-xl">Exusiai's Gun</a>
     </div>
     <div class="navbar-end" x-data="{dark: true}" x-init="dark = localStorage.getItem('theme') == 'forest' ? true : false">
 
