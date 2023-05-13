@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('question_answers', function (Blueprint $table) {
+        Schema::create('answers', function (Blueprint $table) {
             $table->id();
-            $table->string('answer');
+            $table->string('label')->nullable();
             $table->enum('type',[
                 'text', 'checkbox', 'radio'
-            ]);
+            ])->default('text');
 
             $table->foreignId('question_id')->constrained()
                 ->cascadeOnUpdate()->cascadeOnDelete();
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('question_answers');
+        Schema::dropIfExists('answers');
     }
 };
