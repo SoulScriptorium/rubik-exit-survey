@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
-            $table->integer('order');
+            $table->integer('order')->default(0);
             $table->timestamps();
         });
 
