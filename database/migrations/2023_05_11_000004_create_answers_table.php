@@ -20,8 +20,9 @@ return new class extends Migration
 
             $table->foreignId('question_id')->constrained()
                 ->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId('next_page')->constrained(table: 'pages')
-                ->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('next_page')->nullable()
+                ->constrained(table: 'pages')
+                ->cascadeOnUpdate()->nullOnDelete();
 
             $table->timestamps();
         });

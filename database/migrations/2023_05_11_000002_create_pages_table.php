@@ -11,15 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('questions', function (Blueprint $table) {
+        Schema::create('pages', function (Blueprint $table) {
             $table->id();
-            $table->string('label');
-            $table->enum('type', ['single', 'multiple'])->default('single');
-
-            $table->foreignId('page_id')
-                ->nullable()->constrained()
-                ->cascadeOnUpdate()->nullOnDelete();
-
+            $table->string('title')->nullable();
+            $table->string('description')->nullable();
+            $table->integer('order')->default(1);
             $table->timestamps();
         });
     }
@@ -29,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('questions');
+        Schema::dropIfExists('pages');
     }
 };
