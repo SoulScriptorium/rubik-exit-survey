@@ -20,6 +20,7 @@
         <option value="dracula">Dracula</option>
         <option value="cyberpunk">Cyberpunk</option>
     </select>
+    <h1 x-data="{ message: 'I ❤️ Alpine' }" x-text="message"></h1>
 
 </div>
 
