@@ -11,7 +11,7 @@ class TestingController extends Controller
 {
     public function index(){
         $data = Responder::with('answers')->find(1);
-
+/*
         $questionsAndAnswers = $data->answers->map(function ($answer) {
             return [
                 'question' => $answer->question,
@@ -28,7 +28,9 @@ class TestingController extends Controller
 
         $b = Question::with(['answers.responders'])
             ->get();
+        */
+        $page = Page::with(['questions.answers'])->get();
 
-        return $b;
+        return $page;
     }
 }

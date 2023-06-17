@@ -22,19 +22,8 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-
-        // Create 5 responders
-        $responders = Responder::factory()->count(5)->create();
-
-        // Survey
-        Page::factory(5)->has(
-            Question::factory(3)->has(
-                Answer::factory(2)->hasAttached($responders, [
-                    'text' => fake()->sentence,
-                    'checked' => fake()->boolean,
-                ])->state(function () {
-                    return ['next_page' => random_int(0, 1) == 1 ? Page::inRandomOrder()->first()->id : null];
-                })
-            ))->create();
+        $this->call([
+            RealDataSeeder::class,
+        ]);
     }
 }

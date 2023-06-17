@@ -12,9 +12,10 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('welcome', function () {return view('welcome');});
+Route::get('unused', function () {return view('unused');});
 Route::get('testing', [\App\Http\Controllers\TestingController::class, 'index']);
+/*Route::get('test', \App\Http\Livewire\Testing\SecondExample::class);*/
 Route::get('test', \App\Http\Livewire\Testing\ExampleLivewire::class);
 
-Route::get('/', \App\Http\Livewire\StarterPage::class)->name('index');
+Route::get('/', function () {return view('welcome');})->name('index');
 Route::get('survey', \App\Http\Livewire\Questionnaire::class)->name('survey');

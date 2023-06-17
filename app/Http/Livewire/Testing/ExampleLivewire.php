@@ -10,7 +10,7 @@ class ExampleLivewire extends Component
 
     public function render()
     {
-        return view('testing.example-livewire');
+        return view('testing.example-livewire')->layout('components.layout.empty');
     }
 
     public function loadContent(){

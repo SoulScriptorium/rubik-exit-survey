@@ -12,10 +12,8 @@
     <meta content="Student of Ma Chung University" name="author" />
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
     @livewireStyles
 
-    <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 <body>
     <div class="min-h-screen">
@@ -31,4 +29,5 @@
     </div>
 
     @livewireScripts
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </body>

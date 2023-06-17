@@ -1,4 +1,4 @@
-{{-- A good traveler has no fixed plans and is not intent upon arriving. --}}
+{{-- In work, do what you enjoy. --}}
 <div class="min-h-screen">
     <x-layout.header/>
     <div class="hero min-h-screen" style="background-image: url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg);">
