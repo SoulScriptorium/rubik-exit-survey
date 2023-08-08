@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('label')->nullable();
             $table->enum('type',[
-                'text', 'checkbox', 'radio'
+                'text', 'checkbox', 'radio', 'date'
             ])->default('text');
 
             $table->foreignId('question_id')->constrained()

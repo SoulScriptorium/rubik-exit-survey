@@ -48,7 +48,7 @@
                 <div class="col-span-6 grid grid-cols-6 gap-6 px-0 md:px-32">
                     <button class="btn btn-ghost
                     col-span-6 order-last lg:col-span-2 lg:order-first">< Back</button>
-                    <button class="btn btn-outline
+                    <button class="btn btn-primary
                     col-span-6 order-first lg:col-span-2 lg:order-last">Next ></button>
 
                 </div>

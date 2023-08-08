@@ -19,3 +19,6 @@ Route::get('test', \App\Http\Livewire\Testing\ExampleLivewire::class);
 
 Route::get('/', function () {return view('welcome');})->name('index');
 Route::get('survey', \App\Http\Livewire\Questionnaire::class)->name('survey');
+
+/* TESTING GROUND */
+Route::get('test2', \App\Http\Livewire\Testing\BasicForm::class);
