@@ -13,13 +13,13 @@ module.exports = {
     ],
     daisyui: {
         styled: true,
-        themes: true, // include all daisyui's theme
+        themes: ['valentine', 'forest'], // include all daisyui's theme
         base: true,
         utils: true,
         logs: true,
         rtl: false,
         prefix: "",
-        darkTheme: "forest",
+        darkTheme: "forest"
     },
 }
 
