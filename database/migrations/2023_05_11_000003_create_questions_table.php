@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->string('label');
-            $table->enum('type', ['single', 'multiple'])->default('single');
+            $table->enum('type', ['text', 'radio', 'checkbox'])->default('text');
 
             $table->foreignId('page_id')
                 ->nullable()->constrained()

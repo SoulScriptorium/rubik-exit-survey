@@ -15,7 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('label')->nullable();
             $table->enum('type',[
-                'text', 'checkbox', 'radio', 'date'
+                'text', 'checkbox', 'radio'
+            ])->default('text');
+
+            $table->enum('type_input', [
+                'text', 'date'
             ])->default('text');
 
             $table->foreignId('question_id')->constrained()

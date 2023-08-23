@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('title')->nullable();
             $table->string('description')->nullable();
             $table->integer('order')->default(1);
+            $table->integer('next_order')->default(0);
+            $table->integer('prev_order')->default(0);
             $table->timestamps();
         });
     }
