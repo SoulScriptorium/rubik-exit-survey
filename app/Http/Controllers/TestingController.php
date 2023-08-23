@@ -29,8 +29,9 @@ class TestingController extends Controller
         $b = Question::with(['answers.responders'])
             ->get();
         */
-        $page = Page::with(['questions.answers'])->get();
-
+        //$page = Page::with(['questions.answers'])->get();
+        //$page = Page::with('questions.answers')->where('order', 2)->firstOrFail();
+        $page = Page::orderBy('order', 'desc')->first();
         return $page;
     }
 }

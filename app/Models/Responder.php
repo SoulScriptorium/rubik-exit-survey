@@ -10,7 +10,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Responder extends Model
 {
     use HasFactory;
-
+    protected $fillable = [
+        'name', 'nim', 'email', 'phone', 'birth'
+    ];
     protected array $dates = ['created_at', 'deleted_at', 'birth']; // which fields will be Carbon-ized
 
     public function answers(): BelongsToMany {
