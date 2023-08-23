@@ -10,8 +10,8 @@
             @endforeach
         @endforeach
         <div class="col-span-6">
-            {{ $data->links() }}
-            {{--{{ $data->links('pagination::tailwind') }}--}}
+            {{--{{ $data->links() }}--}}
+            {{ $data->links('pagination::tailwind') }}
         </div>
     </form>
 </div>
