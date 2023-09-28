@@ -20,8 +20,9 @@ class BackFront extends Component
     public $last_page_number;
 
 
-    public $selectedRadio = null;
-    public $inputText = null;
+    public $selectedAnswers = [];
+    public $inputText = [];
+    public $selectedOther = false; // it means the selected option has text => then it must be required if selected
 
     public function mount() {
         $this->current_page_number = 1;
@@ -38,9 +39,11 @@ class BackFront extends Component
         return view('testing.back-front');
     }
 
-    public function selectRadio($value, $next_page){
+    public function selectRadio($value, $next_page, $answer_type){
         $this->selectedRadio = $value;
         $this->next_page = $next_page;
+
+        $this->selectedOther = $answer_type == 'text';
     }
 
     public function loadPage($order) {
@@ -64,12 +67,36 @@ class BackFront extends Component
         $new_page = $page_number == 0 ? $this->next_page : $page_number;
 
         $this->stack_navigation[] = $new_page;
+        /*
+        if ($this->current_page_number > 1){
+            $this->submitQuestion();
+        }
+        */
         $this->loadPage($new_page);
 
-        $this->submitQuestion();
+
     }
 
     public function submitQuestion() {
+
+        if (isset($this->selectedAnswers)){
+            foreach ($this->page->questions as $question){
+                switch ($question->type){
+                    case 'radio':
+                        if ($this->selectedOther){
+                            $this->validate([
+                                'selectedAnswers.'.$question->id => 'required'
+                            ]);
+                        } else {
+                            $this->validate([
+                                'selectedAnswers.'.$question->id => 'required',
+                                'inputText.'.$question->id => 'required'
+                            ]);
+                        }
+                    break;
+                }
+            }
+        }
 
     }
 
@@ -118,5 +145,9 @@ class BackFront extends Component
 
     public function done() {
 
+    }
+
+    public function resetVar(){
+        $this->selectedOther = false;
     }
 }

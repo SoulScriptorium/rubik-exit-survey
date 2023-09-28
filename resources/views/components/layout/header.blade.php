@@ -1,7 +1,7 @@
     <!-- Breathing in, I calm body and mind. Breathing out, I smile. - Thich Nhat Hanh -->
 <div class="fixed navbar bg-base-200 shadow-md">
     <div class="navbar-start">
-        <a class="btn btn-ghost normal-case text-xl">Desu</a>
+        <a class="btn btn-ghost normal-case text-xl">Exit Survey | Universitas Ma Chung</a>
     </div>
     <div class="navbar-end" x-data="{dark: true}" x-init="dark = localStorage.getItem('theme') == 'forest' ? true : false">
 

@@ -9,6 +9,7 @@
             <p class="text-lg">{{ $last_page_number }}- {{ $page->description }}</p>
         </div>{{-- End Title --}}
 
+        {{--{{ $selectedOther ? 'true' : 'false' }}--}}
         @if ($errors->any())
             <div class="text-red-500">
                 <ul>
@@ -79,7 +80,7 @@
                 </div>
             </form> {{-- End Form --}}
         @else
-            <form class="mt-16 mx-auto max-w-screen" > {{-- Start Form --}}
+            <form class="mt-16 mx-auto max-w-screen" {{--wire:submit.prevent="nextPage"--}}> {{-- Start Form --}}
 
                 @foreach($page->questions as $item_question)
 
@@ -108,14 +109,16 @@
                                                        name="radio_question_{{ $item_question->id }}"
                                                        value="{{ $item_answer->id }}"
                                                        class=" radio radio-primary hover:border-gray-200"
+                                                       wire:model="selectedAnswers.{{ $item_question->id }}"
                                                        required
-                                                       wire:click="selectRadio({{ $item_answer->id }}, {{ $item_answer->next_page }})">
+                                                       wire:click="selectRadio({{ $item_answer->id }}, {{ $item_answer->next_page }}, {{ $item_answer->type }})">
                                                 <div class=" ms-3 text-lg font-semibold">{{ $item_answer->label }}</div>
                                             </div>
 
                                             @if($item_answer->type == 'text')
                                                 <input class="relative col-span-6 md:col-span-4 input block ms-3 px-2.5 pb-2.5 pt-4  bg-transparent rounded-lg border-1 border-base-content appearance-none focus:outline-none focus:ring-0 focus:border-accent-focus peer"
-                                                       placeholder=" " {{ $selectedRadio == $item_answer->id ? 'required' : '' }}
+                                                       placeholder=" " {{ isset($selectedAnswers[$item_question->id]) && $selectedAnswers[$item_question->id] == $item_answer->id ? 'required' : '' }}
+                                                       wire:model="inputText.{{ $item_question->id }}"
                                                        type="text" id="radio_answer_{{ $item_answer->id }}" />
                                             @endif
 
@@ -146,7 +149,7 @@
 
                                             @if($item_answer->type == 'text')
                                                 <input class="relative col-span-6 md:col-span-4 input block ms-3 px-2.5 pb-2.5 pt-4  bg-transparent rounded-lg border-1 border-base-content appearance-none focus:outline-none focus:ring-0 focus:border-accent-focus peer"
-                                                       placeholder=" " {{ $selectedRadio == $item_answer->id ? 'required' : '' }}
+                                                       placeholder=" " {{--{{ $selectedRadio == $item_answer->id ? 'required' : '' }}--}}
                                                        type="text" id="radio_answer_{{ $item_answer->id }}" />
                                             @endif
 
@@ -173,7 +176,7 @@
                             Selesai & Kirim
                         </button>
                     @else
-                        <button wire:click="nextPage" type="submit"
+                        <button type="submit" wire:click="nextPage"
                                 class="btn btn-outline col-span-6 order-first lg:col-span-2 lg:order-last">
                             Next >
                         </button>
